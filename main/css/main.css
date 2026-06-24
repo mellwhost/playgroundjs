@@ -1,0 +1,332 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}
+:root {
+  --theme-color: #0e0f12;
+  --theme-secondary-color: #18191e;
+  --theme-tree-color: #6366f1;
+  --text-color: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --border-color: #23252e;
+  --theme-font: "Geist", "Inter", system-ui, sans-serif;
+  --log-bg: #0b0c0e;
+}
+body.light-theme {
+  --theme-color: #f8f9fa;
+  --theme-secondary-color: #ffffff;
+  --theme-tree-color: #4f46e5;
+  --text-color: #18181b;
+  --text-muted: #71717a;
+  --border-color: #e4e4e7;
+  --log-bg: #f1f3f5;
+}
+body {
+  background: var(--theme-color);
+  font-family: var(--theme-font);
+  overflow: hidden;
+}
+.menu {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  background-color: var(--theme-color);
+  border-bottom: solid 1px var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1000 !important;
+}
+#editor {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  bottom: 140px;
+  background-color: var(--theme-color);
+  font-family: "Geist Mono", "Fira Code", Consolas, monospace;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.6rem;
+}
+.logo span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.logo img {
+  height: 28px;
+  border-radius: 2px;
+}
+.functions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--theme-font);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+.functions button {
+  background-color: var(--theme-secondary-color);
+  border: solid 1px var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  position: relative;
+}
+.functions button img {
+  height: 16px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.functions button:hover {
+  background-color: var(--border-color);
+  border-color: var(--theme-tree-color);
+}
+.functions button:hover img {
+  opacity: 1;
+}
+.functions button[onclick="executeCode()"] {
+  background-color: var(--theme-tree-color);
+  border-color: var(--theme-tree-color);
+}
+.functions button[onclick="executeCode()"] img {
+  filter: brightness(0) invert(1);
+}
+.functions button[onclick="executeCode()"]:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+.tag {
+  position: absolute;
+  left: 50%;
+  top: 42px;
+  transform: translate(-50%) scale(0.95);
+  background-color: var(--log-bg);
+  border: 1px solid var(--border-color);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-color);
+  white-space: nowrap;
+  height: 22px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.functions button:hover .tag {
+  opacity: 1;
+  transition-delay: 0.4s;
+  transform: translate(-50%) scale(1);
+}
+#log {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  background-color: var(--log-bg);
+  border-top: solid 1px var(--border-color);
+  font-family: "Geist Mono", Consolas, monospace;
+  font-size: 13px;
+  padding: 12px;
+  overflow-y: auto;
+  z-index: 10 !important;
+}
+.window {
+  border: solid 1px var(--border-color);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background-color: var(--theme-secondary-color);
+  border-radius: 12px;
+  padding: 24px;
+  gap: 1.2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.window h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.sep {
+  width: 0.6px;
+  height: 30px;
+  background-color: var(--border-color);
+}
+#start-screen {
+  background: linear-gradient(#1a174b, #000);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 1s ease;
+  left: 0;
+  top: 0;
+  z-index: 9999 !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sep2 {
+  width: 19vw;
+  height: 0.6px;
+  background-color: var(--border-color);
+}
+.group-sett {
+  display: flex;
+  gap: 1rem;
+}
+.group-sett button {
+  height: 30px;
+  width: 30px;
+}
+#config {
+  pointer-events: none;
+  opacity: 0;
+  width: 340px;
+}
+.loading {
+  width: 190px;
+  position: relative;
+  height: 4px;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #1c1c1c;
+  border-radius: 1rem;
+}
+.loading-bar {
+  animation: 3s loading ease;
+  width: 0%;
+  background-color: #fff;
+  height: 100%;
+}
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+#upload {
+  width: 400px;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+}
+#upload-file {
+  width: 100%;
+  padding: 8px;
+  background: var(--theme-color);
+  border: 1px dashed var(--border-color);
+  border-radius: 6px;
+}
+::-webkit-file-upload-button {
+  background-color: var(--theme-secondary-color);
+  border: 1px solid var(--border-color);
+  font-family: var(--theme-font);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+::-webkit-file-upload-button:hover {
+  background-color: var(--border-color);
+}
+.window button {
+  width: 100%;
+  background-color: var(--theme-tree-color);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  height: 36px;
+}
+
+@media (max-width: 1024px) {
+  .menu {
+    padding: 0 1rem;
+  }
+  .functions button {
+    width: 38px;
+    height: 38px;
+  }
+  .functions button img {
+    height: 18px;
+  }
+  #editor {
+    bottom: 180px;
+  }
+  #log {
+    height: 180px;
+    font-size: 14px;
+    padding: 16px;
+  }
+  .window,
+  #upload {
+    width: 90%;
+    max-width: 440px;
+  }
+  .tag {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo span {
+    display: none;
+  }
+  .functions {
+    gap: 0.4rem;
+  }
+  .functions button {
+    width: 36px;
+    height: 36px;
+  }
+  #editor {
+    bottom: 220px;
+  }
+  #log {
+    height: 220px;
+    font-size: 12px;
+    padding: 12px;
+  }
+  .window {
+    padding: 16px;
+    gap: 1rem;
+  }
+  #upload button {
+    height: 40px;
+  }
+}

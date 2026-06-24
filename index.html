@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlaygroundJS</title>
+    <link rel="stylesheet" href="./main/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="manifest" href="manifest.json" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!--Favicon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicons/site.webmanifest" />
+    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
+    <script>
+      function scrollToFeatures() {
+        const element = document.getElementById("features");
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth", // Faz a animação de rolagem suave
+            block: "start", // Alinha o topo do elemento com o topo da tela
+          });
+        }
+      }
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault(); // Impede o navegador de recarregar a página do jeito velho
+
+          const urlDestination = this.getAttribute("href"); // Pega "./playground.html"
+
+          // Modifica a barra de endereço para esconder o ".html"
+          // Vai mostrar apenas "/playground" na barra
+          const cleanUrl = urlDestination.replace(".html", "");
+          window.history.pushState({}, "", cleanUrl);
+
+          // Aqui você faz o redirecionamento ou carrega o conteúdo
+          window.location.href = urlDestination;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="menu">
+      <a href="./pages/home.html" class="logo">
+        <img src="./main/img/logo.png" alt="" />
+        <span>PlaygroundJS</span>
+      </a>
+
+      <div class="functions">
+        <button onclick="executeCode()">
+          <img src="./main/img/play.png" alt="" />
+          <div class="tag" data-i18n="navExecute">Execute</div>
+        </button>
+        <button onclick="toggleTheme()">
+          <img src="./main/img/theme.png" alt="" />
+          <div class="tag" data-i18n="navTheme">Theme</div>
+        </button>
+        <button onclick="openUpload()">
+          <img src="./main/img/upload.png" alt="" />
+          <div class="tag" data-i18n="navUpload">Upload</div>
+        </button>
+        <button onclick="saveFile()">
+          <img src="./main/img/save.png" alt="" />
+          <div class="tag" data-i18n="navSave">Save</div>
+        </button>
+        <button onclick="clearLog()">
+          <img src="./main/img/trash.png" alt="" />
+          <div class="tag" data-i18n="navClear">Clear Log</div>
+        </button>
+        <div class="sep"></div>
+        <button onclick="openConfig()">
+          <img src="./main/img/config.png" alt="" />
+          <div class="tag" data-i18n="navSettings">Settings</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="group">
+      <div id="editor"></div>
+      <div id="log"></div>
+    </div>
+
+    <div class="window" id="upload">
+      <h1 data-i18n="uploadTitle">Upload a file.</h1>
+      <input
+        style="font-family: &quot;Geist&quot;"
+        type="file"
+        id="upload-file"
+      />
+      <button onclick="uploadFile()" data-i18n="uploadBtn">Upload</button>
+    </div>
+
+    <div class="window" id="welcome">
+      <h2 data-i18n="welcomeTitle">Welcome to PlaygroundJS</h2>
+      <h4 data-i18n="welcomeSub">
+        A lightweight compiler and playground for modern JavaScript.
+      </h4>
+      <p data-i18n="welcomeBeta">
+        ⚠️ PlaygroundJS is currently in BETA. You may encounter errors.
+      </p>
+      <button onclick="closeWelcome()">Ok!</button>
+    </div>
+
+    <div class="window" id="config">
+      <h1 data-i18n="configTitle">Settings</h1>
+      <h3 data-i18n="configTrans">Translate</h3>
+      <div class="group-sett">
+        <button onclick="changeLanguage('pt-br')">pt-br</button>
+        <button onclick="changeLanguage('en-us')">en-us</button>
+      </div>
+      <h3 data-i18n="configConsole">Console</h3>
+      <div class="group-console">
+        <button data-i18n="configShow">Show</button>
+      </div>
+      <div class="sep2"></div>
+      <button
+        data-i18n="configClose"
+        style="background-color: #ff5f5f"
+        onclick="closeConfig()"
+      >
+        Close
+      </button>
+    </div>
+
+    <div id="start-screen">
+      <div class="logo">
+        <img src="./main/img/logo.png" alt="" />
+        <span>PlaygroundJS</span>
+      </div>
+      <div class="loading">
+        <div class="loading-bar"></div>
+      </div>
+    </div>
+
+    <script src="./main/js/main-monaco.js"></script>
+    <script src="./main/js/index.js"></script>
+    <script src="./main/js/windows.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.11.5/i18next.min.js"></script>
+  </body>
+</html>

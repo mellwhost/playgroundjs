@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--theme-font);
+  padding: 0;
+}
+:root {
+  --theme-color: #0e0f12;
+  --theme-secondary-color: #18191e;
+  --theme-tree-color: #6366f1;
+  --text-color: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --border-color: #23252e;
+  --theme-font: "Geist", "Inter", system-ui, sans-serif;
+  --log-bg: #0b0c0e;
+}
+body {
+  background-color: var(--theme-secondary-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 90px;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.nav {
+  position: fixed;
+  left: 0;
+  border-bottom: solid 1px var(--border-color);
+  top: 0;
+  font-family: var(--theme-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  background-color: var(--theme-color);
+}
+.logo {
+  display: flex;
+  color: #fff;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.6rem;
+}
+.logo span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.logo img {
+  height: 28px;
+  border-radius: 2px;
+}

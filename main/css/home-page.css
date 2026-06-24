@@ -1,0 +1,347 @@
+/* 🌌 SETUP GLOBAL DO UNIVERSO */
+body {
+  background: #090a0f;
+  margin: 0;
+  padding: 0;
+  font-family: "Geist", "Inter", system-ui, sans-serif;
+  color: #f8f8f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Fundo Estrelado sutil */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-image:
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 20px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 1.5px, transparent 40px);
+  background-size:
+    300px 300px,
+    450px 450px;
+  opacity: 0.3;
+}
+
+/* 🔮 ORBES DE NEVOEIRO ESPACIAL (Glows de fundo) */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  opacity: 0.25;
+}
+.orb-1 {
+  top: 10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: #6366f1;
+}
+.orb-2 {
+  top: 30%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: #a855f7;
+}
+
+/* 🚀 HERO SECTION (CONTEÚDO SUPERIOR) */
+.hero-section {
+  width: 100%;
+  max-width: 1100px;
+  padding: 80px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-header {
+  text-align: center;
+  max-width: 700px;
+}
+
+.badge {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  color: #c7d2fe;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 24px 0 16px 0;
+  letter-spacing: -1.5px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* Botões de Ação */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: #6366f1;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  transition: all 0.2s;
+}
+.btn-primary:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* 🎛️ GRID ASSIMÉTRICO DE DESTAQUES (LADO A LADO) */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr; /* O editor ganha mais destaque que as ações */
+  gap: 24px;
+  width: 100%;
+}
+
+/* Estilização dos Cards */
+.feature-card {
+  background: rgba(15, 17, 23, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.feature-card h3 {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+/* Preview dos Botões */
+.functions-preview {
+  display: flex;
+  gap: 12px;
+}
+
+.preview-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.preview-btn:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: #6366f1;
+  transform: translateY(-2px);
+}
+.preview-btn img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1); /* Deixa ícones escuros brancos */
+}
+
+/* 💻 MOCKUP DO EDITOR DE CÓDIGO DO ESPAÇO */
+.code-card {
+  padding: 0; /* Tiramos o padding pra barra do topo encostar */
+  overflow: hidden;
+}
+
+.card-header-mock {
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.circles {
+  display: flex;
+  gap: 6px;
+}
+.circles span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.c-red {
+  background: #ff5555;
+}
+.c-yellow {
+  background: #ffb86c;
+}
+.c-green {
+  background: #50fa7b;
+}
+
+.file-name {
+  font-size: 12px;
+  color: #6272a4;
+  font-family: monospace;
+}
+
+.code {
+  padding: 24px;
+  font-family: "Fira Code", "Geist Mono", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  background: #181a23; /* Fundo puro Dracula */
+  text-align: left;
+}
+
+.card-footer-info {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #bd93f9;
+  font-weight: 500;
+}
+
+/* Sintaxe Dracula */
+.keyword {
+  color: #ff79c6;
+}
+.variable {
+  color: #f8f8f2;
+}
+.number {
+  color: #bd93f9;
+}
+.function-name {
+  color: #50fa7b;
+}
+.bracket {
+  color: #f1fa8c;
+}
+.nav {
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 4rem;
+  border-bottom: solid 1px var(--border-color);
+  background-color: #0e0f1299;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  gap: 0.6rem;
+}
+.logo span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.logo img {
+  height: 28px;
+  border-radius: 2px;
+}
+.list {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.list a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.list a:hover {
+  color: var(--text-color);
+  background-color: var(--theme-secondary-color);
+}
+.list a.cta-button {
+  background-color: var(--theme-tree-color);
+  color: #fff !important;
+}
+.list a.cta-button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}

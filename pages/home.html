@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlaygroundJS - A JS Compiler & Playground</title>
+    <link rel="stylesheet" href="../main/css/home-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../favicons/site.webmanifest" />
+  </head>
+  <body>
+    <div class="nav">
+      <a href="#" class="logo">
+        <img src="../main/img/logo.png" alt="" />
+        <span>PlaygroundJS</span>
+      </a>
+      <ul class="list">
+        <a href="../index.html"> Go to Playground </a>
+        <a href="./about.html">About</a>
+      </ul>
+    </div>
+    <main class="hero-section">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+
+      <div class="hero-header">
+        <span class="badge">The Next-Gen Web Compiler</span>
+        <h1 class="hero-title">
+          An easy playground for <span class="gradient-text">JavaScript</span>
+        </h1>
+        <p class="hero-subtitle">
+          Write, execute, and debug modern JavaScript directly from your browser
+          inside a sleek, customizable workspace.
+        </p>
+        <div class="hero-actions">
+          <a href="../index.html" class="btn-primary">Launch App</a>
+          <a
+            href="javascript:void(0)"
+            onclick="scrollToFeatures()"
+            class="btn-secondary"
+            >Explore Features</a
+          >
+        </div>
+      </div>
+
+      <div class="features-grid" id="features">
+        <div class="feature-card">
+          <h3>Additional Functions</h3>
+          <p>
+            Manage your ecosystem with quick controls built for speed and
+            efficiency.
+          </p>
+
+          <div class="functions-preview">
+            <button class="preview-btn" title="Save File">
+              <img src="../main/img/save.png" alt="Save" />
+            </button>
+            <button class="preview-btn" title="Upload File">
+              <img src="../main/img/upload.png" alt="Upload" />
+            </button>
+            <button class="preview-btn" title="Toggle Theme">
+              <img src="../main/img/theme.png" alt="Theme" />
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-card code-card">
+          <div class="card-header-mock">
+            <div class="circles">
+              <span class="c-red"></span>
+              <span class="c-yellow"></span>
+              <span class="c-green"></span>
+            </div>
+            <span class="file-name">script.js</span>
+          </div>
+
+          <div class="code">
+            <span class="keyword">const</span> <span class="variable">x</span> =
+            <span class="number">30</span>;<br />
+            <span class="keyword">const</span> <span class="variable">y</span> =
+            <span class="number">40</span>;<br /><br />
+            <span class="keyword">function</span>
+            <span class="function-name">xy</span
+            ><span class="bracket">()</span> {<br />
+            &nbsp;&nbsp;<span class="keyword">return</span>
+            <span class="variable">x</span> +
+            <span class="variable">y</span>;<br />
+            }
+          </div>
+          <div class="card-footer-info">Dracula Syntax Highlight</div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

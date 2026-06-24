@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "PlaygroundJS",
+  "short_name": "PlaygroundJS",
+  "description": "PlaygroundJS is a compiler and playground for JavaScript.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0e0f12",
+  "theme_color": "#0e0f12",
+  "icons": [
+    {
+      "src": "favicons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "favicons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
